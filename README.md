@@ -3,10 +3,11 @@ Aggregated Error
 ========================
 
 This project allows you to connect to DataRobot and re-rank the leaderboard by looking at the 
-aggregated error of the a selection of the top models.
+aggregated error of a selection of the top models.
 
-You will need a data set to perform the calculation on, and this should be relatively small
-(on the order of megabytes) so that you can get results in a reasonable time.
+You will need a data set to use to calculate the aggregated error.
+
+This data set should be relatively small (on the order of megabytes) so that you can get results in a reasonable time.
 
 ## Dependencies
  
@@ -38,6 +39,7 @@ This means that model selection should take into consideration the error of thes
 
 ## Usage
 
+If you want to use the functionality within a script then the file [Example.py](Example.py) will show you how.
 
 The file [app.py](app.py) and the contents of the [templates](templates) directory is a python flask 
 web application you can use to select a DataRobot project, and then the column you want to use to 
