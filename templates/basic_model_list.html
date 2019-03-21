@@ -1,0 +1,16 @@
+
+<div class="canvas text-center">
+   <div class="input-group" style="margin: 0 auto; width: 800px;">
+     <table>
+      <tr><th>Model</th><th>Features [Data]</th><th>{{ project.metric }}</th></tr>
+       {% for mod in models %}
+        <tr>
+          <td>{{ mod['model_type'] }}</td>
+          <td>{{ mod['featurelist_name'] }} [{{ mod['sample_pct'] }}]</td>
+          <td>{{ '%0.4f' %  mod.metrics[project.metric]['validation'] }}</td>
+        </tr>
+       {% endfor %}
+     </table>
+   </div>
+</div>
+

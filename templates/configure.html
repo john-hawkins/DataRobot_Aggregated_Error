@@ -1,0 +1,97 @@
+{% include "header.html" %}
+
+<div class="chooser text-center">
+  <h2>{{ project.project_name }}</h2>
+  <h4>Target: {{ project.target }}</h4>
+</div>
+
+<div class="controlpanel text-center">
+    <form method="post" action="/rank"  enctype="multipart/form-data">
+     <input type="hidden" name="project_id" value="{{ project.id }}">
+     <div class="input-group" style="margin: 0 auto; width: 780px;">
+     <table>
+      <tr><th colspan=2>Configuration</th> <th></th></tr>
+      <tr>
+          <td style="white-space: nowrap">Aggregated Error Metric (required)</td>
+          <td>
+           <select name="error_metric" class="form-control">
+              <option value="RMSE">RMSE</option>
+              <option value="MAE">MAE</option>
+           </select>
+          </td>
+          <td></td>
+      </tr>
+
+      <tr>
+          <td style="white-space: nowrap">Number of models to score</td>
+          <td>
+           <select name="max_test" class="form-control">
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+              <option value="7">7</option>
+              <option value="8">8</option>
+              <option value="9">9</option>
+              <option value="10">10</option>
+              <option value="11">11</option>
+              <option value="12">12</option>
+              <option value="13">13</option>
+              <option value="14">14</option>
+              <option value="15">15</option>
+              <option value="16">16</option>
+              <option value="17">17</option>
+              <option value="18">18</option>
+              <option value="19">19</option>
+              <option value="20">20</option>
+           </select>
+          </td>
+          <td></td>
+      </tr>
+      <tr>
+          <td style="white-space: nowrap">Upload a Dataset</td>
+          <td><input type="file" name="file" class="form-control"></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td style="white-space: nowrap">Select Column for Primary Segment (required)</td>
+          <td>
+           <select name="col_one" class="form-control">
+           {% for fe in features %}
+              <option value="{{ fe }}">{{ fe }}</option>
+           {% endfor %}
+           </select>
+          </td>
+          <td></td>
+      </tr>
+      <tr>
+          <td style="white-space: nowrap">Select Column for Secondary Segment (optional)</td>
+          <td>
+           <select name="col_two" class="form-control">
+           {% for fe in features %}
+              <option value="{{ fe }}">{{ fe }}</option>
+           {% endfor %}
+           </select>
+          </td>
+          <td><button id="generate" type="submit" class="btn btn-danger">Generate</button></td>
+      </tr>
+     </table>
+    </div>
+  </form>
+ <div id="placeholder" style="margin: 10 auto; width: 680px;"></div>
+</div>
+
+<script>
+  bootstrap_alert = function(message) {
+    $('#placeholder').html(
+      '<div class="alert alert-warning"><a class="close" data-dismiss="alert">×</a><span>'+message+'</span></div>');
+   }
+   $('#generate').on('click', function() {bootstrap_alert('Please be patient, this can take a long time to calculate.');
+});
+</script>
+
+{% include "basic_model_list.html" %}
+
+{% include "footer.html" %}

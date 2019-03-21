@@ -1,0 +1,25 @@
+{% include "header.html" %}
+
+<div class="chooser text-center">
+  <h3>Choose your DataRobot Project</h3> 
+  <form method="post" action="/configure">
+    <div class="input-group" style="margin: 0 auto; width: 600px;">
+        <select name="project_id" class="form-control">
+           {% for proj in projects %}
+              <option value="{{ proj.id }}">{{ proj.project_name }}</option>
+           {% endfor %}
+        </select>
+        <div class="input-group-btn">
+           <button type="submit" class="btn btn-danger">Continue</button>
+        </div>
+    </div>
+  </form>
+</div>
+
+<div class="controlpanel text-center">
+     <h4>Once you choose a project you will be prompted to make additional choices.</h4>
+</div>
+
+
+
+{% include "footer.html" %}

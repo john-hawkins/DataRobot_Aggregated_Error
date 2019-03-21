@@ -1,0 +1,34 @@
+{% include "header.html" %}
+
+<div class="chooser text-center">
+  <h2>Cost/Benefit: {{ project.project_name }}</h2>
+  <h4>Target: {{ project.target }} - Metric: {{ project.metric }}</h4>
+</div>
+
+<div class="controlpanel text-center">
+    <form method="post" action="/costbenefit">
+     <input type="hidden" name="project_id" value="{{ project_id }}">
+     <div class="input-group" style="margin: 0 auto; width: 680px;">
+     <table>
+     </table>
+    </div>
+  </form>
+</div>
+
+<div class="canvas text-center">
+   <div class="input-group" style="margin: 0 auto; width: 800px;">
+     <table>
+      <tr><th>Model</th><th>Features [Data]</th><th>{{ project.metric }}</th><th>AGG {{error_metric}}</th></tr>
+       {% for mod in models %}
+        <tr>
+          <td>{{ mod['model_type'] }}</td>
+          <td>{{ mod['features'] }} [{{ mod['sample_pct'] }}]</td>
+          <td>{{ mod['metric'] }}</td>
+          <td>{{ mod['AGG'] }}</td>
+        </tr>
+       {% endfor %}
+     </table>
+   </div>
+</div>
+
+{% include "footer.html" %}
