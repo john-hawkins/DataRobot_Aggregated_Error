@@ -21,12 +21,8 @@ pip install pandas
 pip install datarobot
 ```
 
-You will need create the CONFIG file and fill in the required details from the deployed model.
+The application presumes you have YAML file set up to authenticate you against the DataRobot sever.
 
-```
-cp config.yml.example config.yml
-vi config.yml
-```
 
 ## About
 
